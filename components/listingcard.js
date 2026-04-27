@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function ListingCard({ listing }) {
@@ -8,15 +9,28 @@ export default function ListingCard({ listing }) {
 
   const isPeople = listing.category === 'People'
   const isEvent  = listing.category === 'Events'
+  const isPlace  = listing.category === 'Places'
 
-  const displayName = listing.name || listing.title
+  const displayName = listing['name'] || listing['title']
   const aspectClass = isPeople ? 'aspect-square' : 'aspect-[4/3]'
   const eventUrl    = listing['link']
 
-  return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
+  let cardHref = null
+  if (isEvent && eventUrl) {
+    cardHref = eventUrl
+  } else if (isPeople) {
+    cardHref = '/people'
+  } else if (isPlace) {
+    cardHref = '/places'
+  } else if (isEvent) {
+    cardHref = '/events'
+  }
 
-      {/* Image */}
+  const isExternal = cardHref && cardHref.startsWith('http')
+
+  const cardContent = (
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow">
+
       <div className={`relative w-full ${aspectClass} bg-[#29C4F8]`}>
         {listing.imagePath && !imgError && (
           <Image
@@ -30,51 +44,56 @@ export default function ListingCard({ listing }) {
         )}
       </div>
 
-      {/* Body */}
       <div className="flex flex-col flex-1 p-4 gap-2">
 
-        {/* Taxonomy tag */}
         <span className="text-xs font-semibold uppercase tracking-widest text-[#29C4F8]">
           {listing.subCategory || listing.category}
         </span>
 
-        {/* Name */}
         <h3 className="font-serif text-lg font-bold text-gray-900 leading-snug">
           {displayName}
         </h3>
 
-        {/* Events — date + location */}
         {isEvent && (
           <p className="text-sm text-gray-500">
-            {listing.dateText}{listing.location ? ` · ${listing.location}` : ''}
+            {listing.dateText}{listing.location ? ` \u00b7 ${listing.location}` : ''}
           </p>
         )}
 
-        {/* People — founder name */}
         {isPeople && listing.founderName && (
           <p className="text-sm text-gray-500">{listing.founderName}</p>
         )}
 
-        {/* Description */}
         {listing.description && (
           <p className="text-sm text-gray-600 leading-relaxed flex-1">
             {listing.description}
           </p>
         )}
 
-        {/* Event CTA */}
         {isEvent && eventUrl && (
-          <a
-            href={eventUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 text-sm font-semibold text-[#29C4F8] hover:underline self-start"
-          >
-            More Info
-          </a>
+          <span className="mt-3 text-sm font-semibold text-[#29C4F8] self-start">
+            More Info &rarr;
+          </span>
         )}
 
       </div>
     </div>
   )
+
+  if (cardHref) {
+    if (isExternal) {
+      return (
+        <a href={cardHref} target="_blank" rel="noopener noreferrer" className="block">
+          {cardContent}
+        </a>
+      )
+    }
+    return (
+      <Link href={cardHref} className="block">
+        {cardContent}
+      </Link>
+    )
+  }
+
+  return cardContent
 }
