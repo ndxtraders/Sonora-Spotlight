@@ -1,0 +1,62 @@
+[
+  {
+    "id": "j-hart-plumbing",
+    "name": "J. Hart Plumbing",
+    "category": "People",
+    "founderName": "Buddy Hart",
+    "serviceFocus": "Plumbing & Rooter",
+    "town": "Sonora",
+    "description": "Stop letting water issues damage your property. Fast, reliable, and professional plumbing solutions from a trusted local team that fixes the problem right the first time.",
+    "imagePath": "/listings/j-hart-plumbing.jpg"
+  },
+  {
+    "id": "motherloade-defensible-space",
+    "name": "Motherloade Tree & Defensible Space",
+    "category": "People",
+    "founderName": "",
+    "serviceFocus": "Tree Service & Defensible Space",
+    "town": "Jamestown",
+    "description": "Protect your acreage and lower your fire insurance risks. Professional brush clearing, trail cutting, and tree removal tailored specifically to Tuolumne County regulations.",
+    "imagePath": "/listings/motherloade-defensible-space.jpg"
+  },
+  {
+    "id": "warren-roofing",
+    "name": "Warren Roofing",
+    "category": "People",
+    "founderName": "",
+    "serviceFocus": "Roofing & Gutters",
+    "town": "Sonora",
+    "description": "Protect your home from harsh mountain winters and intense summer heat. Decades of local expertise ensuring your roof stands up to the extremes of the Motherloade.",
+    "imagePath": "/listings/warren-roofing.jpg"
+  },
+  {
+    "id": "diamondback-grill",
+    "name": "Diamondback Grill",
+    "category": "People",
+    "founderName": "",
+    "serviceFocus": "Local Dining & Grills",
+    "town": "Sonora",
+    "description": "The quintessential downtown dining experience. Enjoy locally sourced ingredients, incredible burgers, and a vibrant atmosphere right in the historic center of Sonora.",
+    "imagePath": "/listings/diamondback-grill.jpg"
+  },
+  {
+    "id": "columbia-mercantile-1855",
+    "name": "Columbia Mercantile 1855",
+    "category": "People",
+    "founderName": "",
+    "serviceFocus": "Historic & Specialty Shops",
+    "town": "Columbia",
+    "description": "Step back in time for artisan provisions, local goods, and historic charm in the heart of the State Park. A curated taste of California's Gold Rush heritage.",
+    "imagePath": "/listings/columbia-mercantile-1855.jpg"
+  },
+  {
+    "id": "snac-outdoors",
+    "name": "SNAC - Sierra Nevada Adventure Co.",
+    "category": "People",
+    "founderName": "",
+    "serviceFocus": "Outdoor Gear & Outfitters",
+    "town": "Sonora",
+    "description": "Don't hit the high country without stopping here first. From premium trail gear to kayak rentals, SNAC equips you for serious adventure in the Sierra Nevada.",
+    "imagePath": "/listings/snac-outdoors.jpg"
+  }
+]
