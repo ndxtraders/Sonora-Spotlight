@@ -1,0 +1,20 @@
+[
+  {
+    "id": "house-talk-deck-collapse",
+    "title": "House Talk: The Deck Collapse Prophecy",
+    "date": "2026-04-26",
+    "characters": "Tom & Al",
+    "teaser": "Is a spongy deck board a death trap or a $200 fix? Tom and Al debate the catastrophic potential of a Tuolumne County barbecue.",
+    "contentPath": "/features/house-talk-deck-collapse.md",
+    "featuredImage": "/features/house-talk-header-deck.jpg"
+  },
+  {
+    "id": "house-talk-pine-needles",
+    "title": "House Talk: The Pine Needle Avalanche",
+    "date": "2026-05-03",
+    "characters": "Tom & Al",
+    "teaser": "Tom believes the pine needles on his roof will spontaneously combust. Al tells him to buy a rake. Who is right?",
+    "contentPath": "/features/house-talk-pine-needles.md",
+    "featuredImage": "/features/house-talk-header-roof.jpg"
+  }
+]
