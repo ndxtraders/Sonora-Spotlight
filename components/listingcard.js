@@ -61,8 +61,9 @@ export default function ListingCard({ listing }) {
           </p>
         )}
 
-        {/* Event CTA */}
-        {isEvent && listing.link && (
+    {isEvent && listing['link'] && (
+          
+            href={listing['link']}
           
             href={listing.link}
             target="_blank"
