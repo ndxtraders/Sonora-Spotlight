@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import Image from 'next/image'
 import Link from 'next/link'
-import ListingCard from '@/components/ListingCard'
+import ListingCard from '../components/listingcards'
 
 function getData() {
   const dir = path.join(process.cwd(), 'data')
