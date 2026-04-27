@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
-export default function ListingCard({ listing }) {
+export default function listingCard({ listing }) {
   const [imgError, setImgError] = useState(false)
 
   const isPeople = listing.category === 'People'
