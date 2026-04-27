@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import Image from 'next/image'
 import Link from 'next/link'
-import ListingCard from '../components/listingcards'
+import ListingCard from '../components/listingcard'
 
 function getData() {
   const dir = path.join(process.cwd(), 'data')
@@ -16,93 +16,104 @@ function getData() {
 
 export default function Home() {
   const { people, places, events, features } = getData()
-  const feature = features[0]
-  const featured = [
-    ...people.slice(0, 2),
-    ...places.slice(0, 2),
-    ...events.slice(0, 2),
-  ]
+  const feature  = features[0]
+  const featured = [...people.slice(0, 2), ...places.slice(0, 2), ...events.slice(0, 2)]
 
   return (
-    <>
-      {/* Site Header */}
-      <header className="sticky top-0 z-40 bg-white border-b border-gray-100 px-4 py-3">
-        <h1 className="font-serif font-bold text-xl text-gray-900 text-center">
-          Sonora Spotlight
-        </h1>
+    <div className="min-h-screen bg-white">
+
+      {/* ── Site Header ── */}
+      <header className="sticky top-0 z-40 bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+        <span className="font-serif text-xl font-bold text-gray-900">Sonora Spotlight</span>
+        <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+          <Link href="/people"  className="hover:text-[#29C4F8]">People</Link>
+          <Link href="/places"  className="hover:text-[#29C4F8]">Places</Link>
+          <Link href="/events"  className="hover:text-[#29C4F8]">Events</Link>
+        </nav>
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 pb-28">
-
-        {/* House Talk Hero */}
-        <section className="mt-6 mb-8">
-          <div className="relative w-full aspect-video bg-[#29C4F8] rounded-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-            <div className="absolute inset-0 z-20 flex flex-col justify-end p-5">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#29C4F8] mb-1">
-                House Talk · {feature.characters}
-              </span>
-              <h2 className="font-serif text-white font-bold leading-tight mb-2"
-                  style={{ fontSize: 'clamp(28px, 5vw, 36px)' }}>
-                {feature.title}
-              </h2>
-              <p className="text-white/80 text-sm leading-relaxed line-clamp-2">
-                {feature.teaser}
+      {/* ── House Talk Hero ── */}
+      {feature && (
+        <section className="relative w-full aspect-video bg-gray-900 overflow-hidden">
+          {feature.imagePath && (
+            <Image
+              src={feature.imagePath}
+              alt={feature.title}
+              fill
+              className="object-cover opacity-70"
+              priority
+              sizes="100vw"
+            />
+          )}
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/70 to-transparent">
+            <span className="text-[#29C4F8] text-sm font-semibold uppercase tracking-widest mb-2">
+              House Talk
+            </span>
+            <h1 className="font-serif text-white text-3xl md:text-5xl font-bold leading-tight max-w-2xl">
+              {feature.title}
+            </h1>
+            {feature.excerpt && (
+              <p className="text-gray-200 mt-3 max-w-xl text-base leading-relaxed">
+                {feature.excerpt}
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Pillar Quick-Links */}
-        <section className="mb-10">
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { label: 'People',  href: '/people',  icon: '👤' },
-              { label: 'Places',  href: '/places',  icon: '📍' },
-              { label: 'Events',  href: '/events',  icon: '📅' },
-            ].map(({ label, href, icon }) => (
+            )}
+            {feature.link && (
               <Link
-                key={label}
-                href={href}
-                className="flex flex-col items-center justify-center gap-1 bg-gray-50 hover:bg-[#29C4F8]/10 border border-gray-200 rounded-2xl py-5 transition-colors"
+                href={feature.link}
+                className="mt-4 inline-block bg-[#29C4F8] text-white text-sm font-semibold px-5 py-2 rounded-full w-fit hover:opacity-90 transition"
               >
-                <span className="text-2xl">{icon}</span>
-                <span className="font-semibold text-sm text-gray-700">{label}</span>
+                Read More
               </Link>
-            ))}
+            )}
           </div>
         </section>
+      )}
 
-        {/* Featured Grid */}
-        <section>
-          <h2 className="font-serif font-bold text-gray-900 mb-5"
-              style={{ fontSize: 'clamp(28px, 5vw, 32px)' }}>
-            Featured
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {featured.map((item) => (
-              <ListingCard key={item.id} listing={item} />
-            ))}
-          </div>
-        </section>
-
-      </main>
-
-      {/* Bottom Nav — Thumb Zone */}
-      <nav className="thumb-zone bg-white border-t border-gray-200 flex justify-around py-3 px-4">
+      {/* ── Pillar Quick-Links ── */}
+      <section className="flex gap-3 overflow-x-auto px-4 py-5 md:justify-center md:overflow-visible">
         {[
-          { label: 'Home',   href: '/',       icon: '🏠' },
-          { label: 'People', href: '/people', icon: '👤' },
-          { label: 'Places', href: '/places', icon: '📍' },
-          { label: 'Events', href: '/events', icon: '📅' },
-        ].map(({ label, href, icon }) => (
-          <Link key={label} href={href}
-            className="flex flex-col items-center gap-0.5 text-gray-500 hover:text-[#29C4F8] transition-colors">
-            <span className="text-xl">{icon}</span>
-            <span className="text-xs font-medium">{label}</span>
+          { label: 'People',  href: '/people'  },
+          { label: 'Places',  href: '/places'  },
+          { label: 'Events',  href: '/events'  },
+        ].map(({ label, href }) => (
+          <Link
+            key={label}
+            href={href}
+            className="flex-shrink-0 bg-[#29C4F8] text-white text-sm font-semibold px-5 py-2 rounded-full hover:opacity-90 transition"
+          >
+            {label}
           </Link>
         ))}
+      </section>
+
+      {/* ── Featured Grid ── */}
+      <main className="px-4 pb-24 md:px-8 max-w-6xl mx-auto">
+        <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Featured This Week
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featured.map((listing) => (
+            <ListingCard key={listing.id} listing={listing} />
+          ))}
+        </div>
+      </main>
+
+      {/* ── Bottom Nav (mobile) ── */}
+      <nav className="thumb-zone bg-white border-t border-gray-200 flex justify-around py-3 md:hidden">
+        <Link href="/"        className="flex flex-col items-center text-xs text-gray-500 gap-1">
+          <span className="text-lg">🏠</span>Home
+        </Link>
+        <Link href="/people"  className="flex flex-col items-center text-xs text-gray-500 gap-1">
+          <span className="text-lg">👤</span>People
+        </Link>
+        <Link href="/places"  className="flex flex-col items-center text-xs text-gray-500 gap-1">
+          <span className="text-lg">📍</span>Places
+        </Link>
+        <Link href="/events"  className="flex flex-col items-center text-xs text-gray-500 gap-1">
+          <span className="text-lg">📅</span>Events
+        </Link>
       </nav>
-    </>
+
+    </div>
   )
 }
