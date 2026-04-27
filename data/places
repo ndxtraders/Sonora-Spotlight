@@ -1,0 +1,47 @@
+[
+  {
+    "id": "pinecrest-lake",
+    "name": "Pinecrest Lake",
+    "category": "Places",
+    "subCategory": "Lakes & Rivers",
+    "town": "Pinecrest",
+    "description": "Crystal clear alpine waters surrounded by pristine granite and pine. Hike the four-mile loop, rent a party boat, or just relax on the best mountain beach in Tuolumne County.",
+    "imagePath": "/listings/pinecrest-lake.jpg"
+  },
+  {
+    "id": "dodge-ridge-resort",
+    "name": "Dodge Ridge Mountain Resort",
+    "category": "Places",
+    "subCategory": "Winter Sports",
+    "town": "Pinecrest",
+    "description": "The most accessible uncrowded powder in the Sierra. Whether you are chasing fresh tracks in the winter or mountain biking in the summer, Dodge Ridge delivers elite elevation without the Tahoe traffic.",
+    "imagePath": "/listings/dodge-ridge-resort.jpg"
+  },
+  {
+    "id": "railtown-1897",
+    "name": "Railtown 1897 State Historic Park",
+    "category": "Places",
+    "subCategory": "National & State Parks",
+    "town": "Jamestown",
+    "description": "Explore the historic 'Movie Railroad' that built the cinematic West. Ride behind authentic steam locomotives and tour the functioning roundhouse that keeps these iron horses alive.",
+    "imagePath": "/listings/railtown-1897.jpg"
+  },
+  {
+    "id": "standard-park-sports-complex",
+    "name": "Standard Park Sports Complex",
+    "category": "Places",
+    "subCategory": "Parks & Recreation",
+    "town": "Sonora",
+    "description": "The 12-acre athletic heartbeat of Tuolumne County. From summer youth soccer leagues under the lights to the annual Santa Fly-In, this multi-use complex is where the Motherloade gathers to play.",
+    "imagePath": "/listings/standard-park.jpg"
+  },
+  {
+    "id": "dragoon-gulch-trail",
+    "name": "Dragoon Gulch Trail",
+    "category": "Places",
+    "subCategory": "Trails & Hiking",
+    "town": "Sonora",
+    "description": "A pristine network of trails right in the city limits. Walk through stunning oak woodlands for incredible views of the city and the surrounding Sierra Nevada foothills.",
+    "imagePath": "/listings/dragoon-gulch-trail.jpg"
+  }
+]
