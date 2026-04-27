@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sonora-farmers-market",
+    "title": "Sonora Certified Farmer's Market",
+    "category": "Events",
+    "dateText": "Every Saturday Morning (May - October)",
+    "location": "Downtown Sonora",
+    "description": "Skip the supermarket. Meet the local growers, artisans, and bakers of the Motherloade. The ultimate Saturday morning community tradition.",
+    "imagePath": "/listings/sonora-farmers-market.jpg",
+    "link": "https://sonoraca.com/downtown-sonora/events/"
+  },
+  {
+    "id": "magic-of-the-night",
+    "title": "Magic of the Night",
+    "category": "Events",
+    "dateText": "Select Summer Evenings",
+    "location": "Washington Street, Sonora",
+    "description": "Downtown Sonora comes alive after dark. Antique cars, live street music, and late-night shopping right on Washington Street.",
+    "imagePath": "/listings/magic-of-the-night.jpg",
+    "link": "https://sonoraca.com/downtown-sonora/events/"
+  },
+  {
+    "id": "motherloade-fair",
+    "title": "The Motherloade Fair",
+    "category": "Events",
+    "dateText": "Annual Summer Event",
+    "location": "Motherloade Fairgrounds, Sonora",
+    "description": "Carnival rides, local agriculture, live music, and deep-fried treats. The defining summer weekend for Tuolumne County families.",
+    "imagePath": "/listings/motherloade-fair.jpg",
+    "link": "https://motherloacefair.org/"
+  }
+]
