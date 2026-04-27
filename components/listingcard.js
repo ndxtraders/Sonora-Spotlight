@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export default function ListingCard({ listing }) {
+export default function ListingCard({ listing, isHomepage = false }) {
   const [imgError, setImgError] = useState(false)
 
   const isPeople = listing.category === 'People'
@@ -16,22 +16,28 @@ export default function ListingCard({ listing }) {
   const eventUrl    = listing['link']
 
   let cardHref = null
-  if (isEvent && eventUrl) {
-    cardHref = eventUrl
-  } else if (isPeople) {
-    cardHref = '/people'
-  } else if (isPlace) {
-    cardHref = '/places'
-  } else if (isEvent) {
-    cardHref = '/events'
+  if (isHomepage) {
+    if (isPeople) cardHref = '/people'
+    else if (isPlace) cardHref = '/places'
+    else if (isEvent) cardHref = '/events'
+  } else {
+    if (isEvent && eventUrl) {
+      cardHref = eventUrl
+    } else if (isPeople) {
+      cardHref = '/people'
+    } else if (isPlace) {
+      cardHref = '/places'
+    } else if (isEvent) {
+      cardHref = '/events'
+    }
   }
 
   const isExternal = cardHref && cardHref.startsWith('http')
 
   const cardContent = (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full hover:shadow-md transition-shadow">
 
-      <div className={`relative w-full ${aspectClass} bg-[#29C4F8]`}>
+      <div className={`relative w-full ${aspectClass} bg-[#29C4F8] flex-shrink-0`}>
         {listing.imagePath && !imgError && (
           <Image
             src={listing.imagePath}
@@ -70,7 +76,7 @@ export default function ListingCard({ listing }) {
           </p>
         )}
 
-        {isEvent && eventUrl && (
+        {!isHomepage && isEvent && eventUrl && (
           <span className="mt-3 text-sm font-semibold text-[#29C4F8] self-start">
             More Info &rarr;
           </span>
@@ -83,13 +89,13 @@ export default function ListingCard({ listing }) {
   if (cardHref) {
     if (isExternal) {
       return (
-        <a href={cardHref} target="_blank" rel="noopener noreferrer" className="block">
+        <a href={cardHref} target="_blank" rel="noopener noreferrer" className="block h-full">
           {cardContent}
         </a>
       )
     }
     return (
-      <Link href={cardHref} className="block">
+      <Link href={cardHref} className="block h-full">
         {cardContent}
       </Link>
     )
